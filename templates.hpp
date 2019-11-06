@@ -109,3 +109,59 @@ std::enable_if_t<is_figurelike_tuple_v<T>, double>
     area(const T& fake) {
     return recursive_area<2>(fake);
 }
+
+template<size_t ID, class T>
+double single_center_x(const T& t) {
+    return std::get<ID>(t).x / std::tuple_size_v<T>;
+}
+
+template<size_t ID, class T>
+double single_center_y(const T& t) {
+    return std::get<ID>(t).y / std::tuple_size_v<T>;
+}
+
+template<size_t ID, class T>
+double recursive_center_x(const T& t) {
+    if constexpr (ID < std::tuple_size_v<T>) {
+        return single_center_x<ID>(t) + recursive_center_x<ID + 1>(t);
+    } else {
+        return 0;
+    }
+}
+
+template<size_t ID, class T>
+double recursive_center_y(const T& t) {
+    if constexpr (ID < std::tuple_size_v<T>) {
+        return single_center_y<ID>(t) + recursive_center_y<ID + 1>(t);
+    } else {
+        return 0;
+    }
+}
+
+template<class T>
+std::enable_if_t<is_figurelike_tuple_v<T>, vertex_t<double>>
+    center(const T& tup) {
+        return {recursive_center_x<0>(tup), recursive_center_y<0>(tup)};
+}
+
+template<size_t ID, class T>
+void single_print(const T& t, std::ostream& os) {
+    os << std::get<ID>(t) << ' ';
+}
+
+template<size_t ID, class T>
+void recursive_print(const T& t, std::ostream& os) {
+    if constexpr (ID < std::tuple_size_v<T>) {
+        single_print<ID>(t, os);
+        recursive_print<ID + 1>(t, os);
+    } else {
+        return;
+    }
+}
+
+template<class T>
+std::enable_if_t<is_figurelike_tuple_v<T>, void>
+    print(const T& tup, std::ostream& os) {
+        recursive_print<0>(tup, os);
+        os << std::endl;
+}

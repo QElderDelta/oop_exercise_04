@@ -1,5 +1,4 @@
 #include <iostream>
-#include <fstream>
 
 #include "vertex.hpp"
 #include "templates.hpp"
@@ -9,8 +8,6 @@
 
 int main() {
     int command;
-    std::ofstream os;
-    os.open("file.txt");
     std::cout << "1 - Rhombus" << std::endl;
     std::cout << "2 - Pentagon" << std::endl;
     std::cout << "3 - Hexagon" << std::endl;
@@ -27,14 +24,14 @@ int main() {
                 continue;
             }
             Rhombus r{p1, p2, p3, p4};
-            print(r, os);
+            print(r, std::cout);
             std::cout << area(r) << std::endl;
             std::cout << center(r) << std::endl;
             std::tuple<vertex_t<double>, vertex_t<double>, vertex_t<double>, 
                 vertex_t<double>> r1{p1, p2, p3, p4};
-            //print(r1, std::cout);
+            print(r1, std::cout);
             std::cout << area(r1) << std::endl;
-            //std::cout << center(r1) << std::endl;
+            std::cout << center(r1) << std::endl;
         } else if(command == 2) {
             vertex_t<double> p1, p2, p3, p4, p5;
             std::cin >> p1 >> p2 >> p3 >> p4 >> p5;
@@ -44,9 +41,9 @@ int main() {
             std::cout << center(r) << std::endl;
             std::tuple<vertex_t<double>, vertex_t<double>, vertex_t<double>, 
                 vertex_t<double>, vertex_t<double>> r1{p1, p2, p3, p4, p5};
-            //print(r1, std::cout);
+            print(r1, std::cout);
             std::cout << area(r1) << std::endl;
-            //std::cout << center(r1) << std::endl;
+            std::cout << center(r1) << std::endl;
         } else if(command == 3) {
             vertex_t<double> p1, p2, p3, p4, p5, p6;
             std::cin >> p1 >> p2 >> p3 >> p4 >> p5 >> p6;
@@ -57,9 +54,9 @@ int main() {
             std::tuple<vertex_t<double>, vertex_t<double>, vertex_t<double>, 
                 vertex_t<double>, vertex_t<double>, vertex_t<double>> 
                     r1{p1, p2, p3, p4, p5, p6};
-            //print(r1);
+            print(r1, std::cout);
             std::cout << area(r1) << std::endl;
-            //std::cout << center(r1) << std::endl; 
+            std::cout << center(r1) << std::endl; 
         } else {
             std::cout << "Wrong command" << std::endl; 
         }
