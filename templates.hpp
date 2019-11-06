@@ -49,10 +49,10 @@ std::enable_if_t<has_area_method_v<T>, double>
 template<class T, class = void>
 struct has_print_method : std::false_type {};
 
-std::ostream os(std::cout.rdbuf());
+
 template<class T>
 struct has_print_method<T,
-  std::void_t<decltype(std::declval<const T>().print(os))>> :
+  std::void_t<decltype(std::declval<const T>().print(std::cout))>> :
     std::true_type {};
 
 template<class T>

@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 
 #include "vertex.hpp"
 #include "templates.hpp"
@@ -8,6 +9,8 @@
 
 int main() {
     int command;
+    std::ofstream os;
+    os.open("file.txt");
     std::cout << "1 - Rhombus" << std::endl;
     std::cout << "2 - Pentagon" << std::endl;
     std::cout << "3 - Hexagon" << std::endl;
@@ -24,7 +27,7 @@ int main() {
                 continue;
             }
             Rhombus r{p1, p2, p3, p4};
-            print(r, std::cout);
+            print(r, os);
             std::cout << area(r) << std::endl;
             std::cout << center(r) << std::endl;
             std::tuple<vertex_t<double>, vertex_t<double>, vertex_t<double>, 

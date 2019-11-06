@@ -40,8 +40,8 @@ double Hexagon<T>::area() const {
 
 template<class T>
 vertex_t<T> Hexagon<T>::center() const {
-    double x = 0;
-    double y = 0;
+    T x = 0;
+    T y = 0;
     for(const auto& p : points) {
         x += p.x;
         y += p.y;
