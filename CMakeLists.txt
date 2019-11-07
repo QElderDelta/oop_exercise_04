@@ -1,13 +1,13 @@
 cmake_minimum_required(VERSION 3.1)
 
-project(lab3)
+project(lab4)
 
 
 
 
 
 
-add_executable(lab3
+add_executable(lab4
     main.cpp
     vertex.hpp
     rhombus.hpp

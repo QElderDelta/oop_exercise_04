@@ -21,6 +21,7 @@ int main() {
                 Rhombus r{p1, p2, p3, p4};
             } catch(std::exception& e) {
                 std::cout << e.what() << std::endl;
+                std::cin >> command;
                 continue;
             }
             Rhombus r{p1, p2, p3, p4};
@@ -29,6 +30,7 @@ int main() {
             std::cout << center(r) << std::endl;
             std::tuple<vertex_t<double>, vertex_t<double>, vertex_t<double>, 
                 vertex_t<double>> r1{p1, p2, p3, p4};
+            std::cout << "Rhombus: ";
             print(r1, std::cout);
             std::cout << area(r1) << std::endl;
             std::cout << center(r1) << std::endl;
@@ -41,6 +43,7 @@ int main() {
             std::cout << center(r) << std::endl;
             std::tuple<vertex_t<double>, vertex_t<double>, vertex_t<double>, 
                 vertex_t<double>, vertex_t<double>> r1{p1, p2, p3, p4, p5};
+            std::cout << "Pentagon: ";
             print(r1, std::cout);
             std::cout << area(r1) << std::endl;
             std::cout << center(r1) << std::endl;
@@ -54,6 +57,7 @@ int main() {
             std::tuple<vertex_t<double>, vertex_t<double>, vertex_t<double>, 
                 vertex_t<double>, vertex_t<double>, vertex_t<double>> 
                     r1{p1, p2, p3, p4, p5, p6};
+            std::cout << "Hexagon: ";
             print(r1, std::cout);
             std::cout << area(r1) << std::endl;
             std::cout << center(r1) << std::endl; 

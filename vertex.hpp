@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <cmath>
+#include <iomanip>
 
 template <class T>
 struct vertex_t {
@@ -17,7 +18,7 @@ std::istream& operator>>(std::istream& is, vertex_t<T>& p) {
 
 template<class T>
 std::ostream& operator<<(std::ostream& os, const vertex_t<T>& p) {
-    os << "[" << p.x << ", " << p.y << "]";
+    os  << std::fixed << std::setprecision(3) << "[" << p.x << ", " << p.y << "]";
     return os;
 }
 
